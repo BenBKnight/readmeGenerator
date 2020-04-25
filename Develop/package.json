@@ -1,7 +1,6 @@
 {
   "name": "static-site",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +8,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "badge-maker": "^3.0.0-rc1",
     "dotenv": "^8.0.0",
     "inquirer": "^6.5.2"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
