@@ -33,18 +33,19 @@ const questions = [{
 }
 ];
 const titles = [{
-    gitHubUserName: "GitHub User Name"
+    gitHubUserName: "## GitHub User Name",
 }];
 inquirer.prompt(questions).then(answers => {
     let justAnswers = Object.values(answers)
+    let justTitles = Object.values(titles)
 
 
 
-
-    // fs.appendFile("README.md", answers.gitHubUserName + '\n', function (err) {
-    //     if (err) throw err;
-    //     console.log("saved");
-    // });
+    fs.appendFile("README.md", titles[0].gitHubUserName + '\n' + answers.gitHubUserName + '\n', function (err) {
+        if (err) throw err;
+        console.log("saved");
+        console.log(titles[0].gitHubUserName)
+    });
     // fs.appendFile("README.md", answers.projectTitle + '\n', function (err) {
     //     if (err) throw err;
     //     console.log("saved");
