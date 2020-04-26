@@ -1,8 +1,8 @@
-## Weather app
-This is a weather app
-## benny bk
-## Weather app
+# weather app
 this is a weather app
-## bennybk
+## benny b
+## Installation
+OS and Linux install: install -yeahbaby
+OS and Linux install: install -notsomuchbaby
 ## Preview
 ![Picture of finished project](download.jpg)

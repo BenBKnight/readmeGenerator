@@ -24,6 +24,7 @@ const questions = [
     // // badges
     // {
     // },
+
     // screenshot
     {
         type: "input",
@@ -63,23 +64,32 @@ const questions = [
     }
 ];
 const titles = [
+    "# ",
     "## ",
-    "## Preview"
+    "### ",
+    "#### ",
+    "##### ",
+    "###### ",
+
 
 ];
 inquirer.prompt(questions).then(answers => {
     let justAnswers = Object.values(answers)
     let justTitles = Object.values(titles)
+    const installationSetup = titles[1] + "Installation" + "\n" + "OS and Linux install: " + answers.OsAndLinuxInstallation + '\n' + "OS and Linux install: " + answers.windowsInstallation + '\n';
 
 // Project title and description
     fs.appendFile("README.md", titles[0] + answers.projectTitle + '\n' + answers.description + '\n', function (err) {
         if (err) throw err;
     });
     
-    fs.appendFile("README.md", titles[0] + answers.gitHubUserName + '\n', function (err) {
+    fs.appendFile("README.md", titles[1] + answers.gitHubUserName + '\n', function (err) {
         if (err) throw err;
     });
-    fs.appendFile("README.md", titles[1] + "\n" + "![Picture of finished project](" + answers.screenshotPath + ")" + '\n', function (err) {
+    fs.appendFile("README.md", titles[1] + "Preview" + "\n" + "![Picture of finished project](" + answers.screenshotPath + ")" + '\n', function (err) {
+        if (err) throw err;
+    });
+    fs.appendFile("README.md", installationSetup, function (err) {
         if (err) throw err;
     });
 
