@@ -1,5 +1,6 @@
-const fs = require("fs")
-const inquirer = require("inquirer")
+const fs = require("fs");
+const axios = require ("axios");
+const inquirer = require("inquirer");  
 
 const questions = [
     // Product name
@@ -121,15 +122,18 @@ inquirer.prompt(questions).then(answers => {
         if (err) throw err;
         console.log("saved");
     });
+}) 
 
-    // fs.appendFile("README.md", answers.usageExample + '\n', function (err) {
-    //     if (err) throw err;
-    //     console.log("saved");
-    // });
-
-
-})
-
+// const gitHubUserNameAxiosSearch = BenBKnight
+// function getRepo({ gitHubUserNameAxiosSearch }) {
+//     const url = `https://api.github.com/users/${gitHubUserNameAxiosSearch}/repos?per_page=100`
+//     axios.get(url).then(function(res){
+//         const repoNames = res.data.map (function (repo){
+//             return repo.name;
+//         })
+//     })
+// }
+// getRepo();
 
 
 
@@ -138,3 +142,20 @@ inquirer.prompt(questions).then(answers => {
 // function init() {
 // }
 // init();
+// inquirer
+//   .prompt({
+//     message: "Enter your GitHub username:",
+//     name: "username"
+//   },{
+//       message: "Enter your repository name",
+//       name: "repository"
+//   })
+//   .then(function getRepo({ username, repository }) {
+//     const queryUrl = `https://api.github.com/users/${username}/readmeGenerator`;
+//     //https://api.github.com/repos/{owner}/{repo}
+//     axios.get(queryUrl).then(function(res) {
+//       const repoNames = res.data.map(function(repo) {
+//         return repo.name;
+//       });
+//       console.log (res)
+//     })})
