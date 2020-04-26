@@ -1,19 +1,24 @@
-# Weather app
-this is a weather app
+# Readme generator
+A generator to make readme's quick and easy to produce
+## User Story
+As a developer, I want a readme generator, so that I can create readme's quick and easy, as well as professional
+   
 ## Preview
 ![Picture of finished project](download.jpg)
 ## Installation
 OS and Linux install:
    
-```install - os```
+```-install os```
    
 Windows install: 
    
-```install - windows```
-## bennay
+```-install windows```
+## Github User Information
+   
+bennay
 ## Contributors:
    
-Your mom's chest hair
+Ben Knight
 ## Licenses
    
-[MIT](https://choosealicense.com/licenses/mit/)
+[none](none)

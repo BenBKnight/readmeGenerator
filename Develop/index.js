@@ -17,7 +17,22 @@ const questions = [
     // // badges
     // {
     // },
-
+    // User Story
+    {
+        type: "input",
+        name: "userStoryPerson",
+        message: "As a ______ ",
+    },
+    {
+        type: "input",
+        name: "userStoryProject",
+        message: "I want a ______ ",
+    },
+    {
+        type: "input",
+        name: "userStoryDescription",
+        message: "So that I can _____ ",
+    },
     // screenshot
     {
         type: "input",
@@ -80,10 +95,15 @@ inquirer.prompt(questions).then(answers => {
     let justTitles = Object.values(titles)
     // variable for long installation input
     const installationSetup = titles[1] + "Installation" + "\n" + "OS and Linux install:" + '\n' + '   ' + '\n' + "```" + answers.OsAndLinuxInstallation + "```" + '\n' + '   ' + '\n' + "Windows install: " + '\n' + '   ' + '\n' + "```" + answers.windowsInstallation + "```" + '\n';
+    const userStorySetup = titles[1] + "User Story"+ '\n' + "As a " + answers.userStoryPerson + ", I want a " + answers.userStoryProject + ", so that I can " + answers.userStoryDescription + "\n"+"   "+"\n";
 
     // Project title and description
     fs.appendFileSync("README.md", titles[0] + answers.projectTitle + '\n' + answers.description + '\n', function (err) {
         if (err) throw err;
+    });
+    fs.appendFileSync("README.md", userStorySetup, function (err) {
+        if (err) throw err;
+        console.log("saved");
     });
     fs.appendFileSync("README.md", titles[1] + "Preview" + "\n" + "![Picture of finished project](" + answers.screenshotPath + ")" + '\n', function (err) {
         if (err) throw err;
@@ -91,21 +111,17 @@ inquirer.prompt(questions).then(answers => {
     fs.appendFileSync("README.md", installationSetup, function (err) {
         if (err) throw err;
     });
-    fs.appendFileSync("README.md", titles[1] + answers.gitHubUserName + '\n', function (err) {
+    fs.appendFileSync("README.md", titles[1] + "Github User Information" + "\n" + "   " + "\n" + answers.gitHubUserName + '\n', function (err) {
         if (err) throw err;
     });
     fs.appendFileSync("README.md", titles[1] + "Contributors:" + '\n' + "   " + '\n' + answers.contributors + "\n", function (err) {
         if (err) throw err;
-        console.log("saved");
     });
     fs.appendFileSync("README.md", titles[1] + "Licenses" + '\n' + "   " + '\n' + "[" + answers.licenceName + "]" + "(" + answers.licenceSite + ")", function (err) {
         if (err) throw err;
         console.log("saved");
     });
-    // fs.appendFile("README.md", answers.windowsInstallation + '\n', function (err) {
-    //     if (err) throw err;
-    //     console.log("saved");
-    // });
+
     // fs.appendFile("README.md", answers.usageExample + '\n', function (err) {
     //     if (err) throw err;
     //     console.log("saved");
