@@ -1,13 +1,6 @@
 const fs = require("fs")
 const inquirer = require("inquirer")
 
-// Development setup
-// development setup instructions
-// Meta
-// user social media
-// Contributing
-// contributing instructions
-
 const questions = [
     // Product name
     {
@@ -31,9 +24,6 @@ const questions = [
         name: "screenshotPath",
         message: "What is the screenshot path? ex: ./assets/screenShot.png"
     },
-    // // Installation
-    // {
-    // },
     // installation os
     {
         type: "input",
@@ -47,15 +37,12 @@ const questions = [
         message: "What command to install on Windows?",
     },
 
-
+// Github user name
     {
         type: "input",
         name: "gitHubUserName",
         message: "What is your gitHub user name?"
     },
-
-    // Usage Example
-
     // examples
     {
         type: "input",
@@ -76,14 +63,11 @@ const titles = [
 inquirer.prompt(questions).then(answers => {
     let justAnswers = Object.values(answers)
     let justTitles = Object.values(titles)
-    const installationSetup = titles[1] + "Installation" + "\n" + "OS and Linux install: " + answers.OsAndLinuxInstallation + '\n' + '   '+ '\n' + "Windows install: " + answers.windowsInstallation + '\n';
+    // variable for long installation input
+    const installationSetup = titles[1] + "Installation" + "\n" + "OS and Linux install:"  + '\n' + '   '+ '\n' + "```" + answers.OsAndLinuxInstallation + "```" + '\n' + '   '+ '\n' + "Windows install: " + '\n' + '   '+ '\n' + "```" + answers.windowsInstallation + "```" + '\n';
 
 // Project title and description
     fs.appendFile("README.md", titles[0] + answers.projectTitle + '\n' + answers.description + '\n', function (err) {
-        if (err) throw err;
-    });
-    
-    fs.appendFile("README.md", titles[1] + answers.gitHubUserName + '\n', function (err) {
         if (err) throw err;
     });
     fs.appendFile("README.md", titles[1] + "Preview" + "\n" + "![Picture of finished project](" + answers.screenshotPath + ")" + '\n', function (err) {
@@ -93,6 +77,10 @@ inquirer.prompt(questions).then(answers => {
         if (err) throw err;
     });
 
+
+    fs.appendFile("README.md", titles[1] + answers.gitHubUserName + '\n', function (err) {
+        if (err) throw err;
+    });
     // fs.appendFile("README.md", answers.description + '\n', function (err) {
     //     if (err) throw err;
     //     console.log("saved");
