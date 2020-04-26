@@ -76,7 +76,7 @@ const titles = [
 inquirer.prompt(questions).then(answers => {
     let justAnswers = Object.values(answers)
     let justTitles = Object.values(titles)
-    const installationSetup = titles[1] + "Installation" + "\n" + "OS and Linux install: " + answers.OsAndLinuxInstallation + '\n' + "OS and Linux install: " + answers.windowsInstallation + '\n';
+    const installationSetup = titles[1] + "Installation" + "\n" + "OS and Linux install: " + answers.OsAndLinuxInstallation + '  ' + "OS and Linux install: " + answers.windowsInstallation + '\n';
 
 // Project title and description
     fs.appendFile("README.md", titles[0] + answers.projectTitle + '\n' + answers.description + '\n', function (err) {
