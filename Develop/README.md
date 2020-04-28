@@ -1,24 +1,24 @@
 # strtUP
-this is a project
+This is a proj
 ## User Story
-```As a aldkjf, 
-I want a alkjdfl, 
-so that I can alskdjfl
-   ## Preview
+```As a dev, 
+I want a app , 
+so that I can do stuff```
+## Preview
 ![Picture of finished project](download.jpg)
 ## Installation
 OS and Linux install:
    
-```install -os```
+```-install os```
    
 Windows install: 
    
-```install -wind```
+```-install wind```
 ## Licenses
    
-[mit](aklsdjf)
+[none](none)
 ## Contributors:
-georgegombert https://github.com/georgegombert
-JINJ95 https://github.com/JINJ95
-BenBKnight https://github.com/BenBKnight
-brentp24 https://github.com/brentp24
+[georgegombert] (https://github.com/georgegombert) 
+[JINJ95] (https://github.com/JINJ95) 
+[BenBKnight] (https://github.com/BenBKnight) 
+[brentp24] (https://github.com/brentp24) 

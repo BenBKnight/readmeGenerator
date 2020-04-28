@@ -101,7 +101,7 @@ inquirer.prompt(questions).then(answers => {
     let justTitles = Object.values(titles)
     // variable for long installation input
     const installationSetup = titles[1] + "Installation" + "\n" + "OS and Linux install:" + '\n' + '   ' + '\n' + "```" + answers.OsAndLinuxInstallation + "```" + '\n' + '   ' + '\n' + "Windows install: " + '\n' + '   ' + '\n' + "```" + answers.windowsInstallation + "```" + '\n';
-    const userStorySetup = titles[1] + "User Story" + '\n' + "```" + "As a " + answers.userStoryPerson+ ", \n" + "I want a " + answers.userStoryProject + ", \n" + "so that I can " + answers.userStoryDescription + "\n" + "   " + "\n";
+    const userStorySetup = titles[1] + "User Story" + '\n' + "```" + "As a " + answers.userStoryPerson+ ", \n" + "I want a " + answers.userStoryProject + ", \n" + "so that I can " + answers.userStoryDescription + "```" + "\n";
     const queryUrl = `https://api.github.com/repos/` + answers.username + "/" + answers.repoCalled;
     // Project title and description
     fs.appendFileSync("README.md", titles[0] + answers.projectTitle + '\n' + answers.description + '\n', function (err) {
