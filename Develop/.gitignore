@@ -1,11 +1,11 @@
 node_modules
 .env
-# .json
-# *.json
-# */node_modules/*
-# node_modules/*
-# ../.DS_Store
-# node_modules
-# .DS_Store
-# *.DS_Store
-# !README.md
+.json
+*.json
+*/node_modules/*
+node_modules/*
+../.DS_Store
+node_modules
+.DS_Store
+*.DS_Store
+!README.md
