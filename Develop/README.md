@@ -1,22 +1,26 @@
-# strtUP
-This is a proj
+# test
+test
 ## User Story
-```As a dev, 
-I want a app , 
-so that I can do stuff```
+   
+```As a test, 
+I want a test, 
+so that I can test
+   
+```
+   
 ## Preview
 ![Picture of finished project](download.jpg)
 ## Installation
 OS and Linux install:
    
-```-install os```
+```test```
    
 Windows install: 
    
-```-install wind```
+```test```
 ## Licenses
    
-[none](none)
+[test](test)
 ## Contributors:
 [georgegombert] (https://github.com/georgegombert) 
 [JINJ95] (https://github.com/JINJ95) 
