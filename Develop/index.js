@@ -1,6 +1,6 @@
 const fs = require("fs");
-const axios = require ("axios");
-const inquirer = require("inquirer");  
+const axios = require("axios");
+const inquirer = require("inquirer");
 
 const questions = [
     // Product name
@@ -56,8 +56,13 @@ const questions = [
     // Github user name
     {
         type: "input",
-        name: "gitHubUserName",
-        message: "What is your gitHub user name?"
+        message: "Enter your GitHub username:",
+        name: "username"
+    },
+    {
+        input: "input",
+        message: "Enter your repository name",
+        name: "repoCalled"
     },
     // examples
     {
@@ -65,11 +70,11 @@ const questions = [
         name: "usageExample",
         message: "What is a good example of using this project?",
     },
-    {
-        type: "input",
-        name: "contributors",
-        message: "Who are the contributors to this project?",
-    },
+    // {
+    //     type: "input",
+    //     name: "contributors",
+    //     message: "Who are the contributors to this project?",
+    // },
     {
         type: "input",
         name: "licenceName",
@@ -96,15 +101,14 @@ inquirer.prompt(questions).then(answers => {
     let justTitles = Object.values(titles)
     // variable for long installation input
     const installationSetup = titles[1] + "Installation" + "\n" + "OS and Linux install:" + '\n' + '   ' + '\n' + "```" + answers.OsAndLinuxInstallation + "```" + '\n' + '   ' + '\n' + "Windows install: " + '\n' + '   ' + '\n' + "```" + answers.windowsInstallation + "```" + '\n';
-    const userStorySetup = titles[1] + "User Story"+ '\n' + "As a " + answers.userStoryPerson + ", I want a " + answers.userStoryProject + ", so that I can " + answers.userStoryDescription + "\n"+"   "+"\n";
-
+    const userStorySetup = titles[1] + "User Story" + '\n' + "```" + "As a " + answers.userStoryPerson+ ", \n" + "I want a " + answers.userStoryProject + ", \n" + "so that I can " + answers.userStoryDescription + "\n" + "   " + "\n";
+    const queryUrl = `https://api.github.com/repos/` + answers.username + "/" + answers.repoCalled;
     // Project title and description
     fs.appendFileSync("README.md", titles[0] + answers.projectTitle + '\n' + answers.description + '\n', function (err) {
         if (err) throw err;
     });
     fs.appendFileSync("README.md", userStorySetup, function (err) {
         if (err) throw err;
-        console.log("saved");
     });
     fs.appendFileSync("README.md", titles[1] + "Preview" + "\n" + "![Picture of finished project](" + answers.screenshotPath + ")" + '\n', function (err) {
         if (err) throw err;
@@ -112,29 +116,22 @@ inquirer.prompt(questions).then(answers => {
     fs.appendFileSync("README.md", installationSetup, function (err) {
         if (err) throw err;
     });
-    fs.appendFileSync("README.md", titles[1] + "Github User Information" + "\n" + "   " + "\n" + answers.gitHubUserName + '\n', function (err) {
+    axios.get(queryUrl).then(function (res) {
+        axios.get(res.data.contributors_url).then(function (res) {
+            fs.appendFileSync("README.md", titles[1] + "Contributors:" + '\n', function (err) {
+                if (err) throw err;
+            });
+            for (i = 0; i < res.data.length; i++) {
+                fs.appendFileSync("README.md", "[" + res.data[i].login + "]" + " (" + res.data[i].html_url + ") \n", function (err) {
+                    if (err) throw err;
+                })
+            }
+        })
+    })
+    fs.appendFileSync("README.md", titles[1] + "Licenses" + '\n' + "   " + '\n' + "[" + answers.licenceName + "]" + "(" + answers.licenceSite + ")" + `\n`, function (err) {
         if (err) throw err;
     });
-    fs.appendFileSync("README.md", titles[1] + "Contributors:" + '\n' + "   " + '\n' + answers.contributors + "\n", function (err) {
-        if (err) throw err;
-    });
-    fs.appendFileSync("README.md", titles[1] + "Licenses" + '\n' + "   " + '\n' + "[" + answers.licenceName + "]" + "(" + answers.licenceSite + ")", function (err) {
-        if (err) throw err;
-        console.log("saved");
-    });
-}) 
-
-// const gitHubUserNameAxiosSearch = BenBKnight
-// function getRepo({ gitHubUserNameAxiosSearch }) {
-//     const url = `https://api.github.com/users/${gitHubUserNameAxiosSearch}/repos?per_page=100`
-//     axios.get(url).then(function(res){
-//         const repoNames = res.data.map (function (repo){
-//             return repo.name;
-//         })
-//     })
-// }
-// getRepo();
-
+})
 
 
 // function writeToFile(fileName, data) {
@@ -142,20 +139,30 @@ inquirer.prompt(questions).then(answers => {
 // function init() {
 // }
 // init();
-// inquirer
-//   .prompt({
+
+// const questions = [{
+//     type: "input",
 //     message: "Enter your GitHub username:",
 //     name: "username"
-//   },{
-//       message: "Enter your repository name",
-//       name: "repository"
-//   })
-//   .then(function getRepo({ username, repository }) {
-//     const queryUrl = `https://api.github.com/users/${username}/readmeGenerator`;
-//     //https://api.github.com/repos/{owner}/{repo}
-//     axios.get(queryUrl).then(function(res) {
-//       const repoNames = res.data.map(function(repo) {
-//         return repo.name;
-//       });
-//       console.log (res)
-//     })})
+// }, {
+//     input: "input",
+//     message: "Enter your repository name",
+//     name: "repoCalled"
+// }];
+// inquirer.prompt(questions).then(answers => {
+
+//     const queryUrl = `https://api.github.com/repos/` + answers.username + "/" + answers.repoCalled;
+
+//     //https://api.github.com/repos/BenBKnight/readmeGenerator
+//     axios.get(queryUrl).then(function (res) {
+//         console.log(res.data.name)
+//         axios.get(res.data.contributors_url).then(function (res) {
+//             console.log(res.data.length)
+//             for (i = 0; i < res.data.length; i++) {
+//                 fs.appendFileSync("README.md", res.data[i].login + " " + res.data[i].html_url + "\n", function (err) {
+//                     if (err) throw err;
+//                 })
+//             }
+//         })
+//     })
+// })
