@@ -1,26 +1,26 @@
-# test
-test
+# strtUP
+strtUP is a start up dashboard
 ## User Story
    
-```As a test, 
-I want a test, 
-so that I can test
+```As a web user, 
+I want a app, 
+so that I can see all my social media in one place
    
 ```
    
 ## Preview
-![Picture of finished project](download.jpg)
+![Picture of finished project](strtUP.png)
 ## Installation
 OS and Linux install:
    
-```test```
+```None required```
    
 Windows install: 
    
-```test```
+```None required```
 ## Licenses
    
-[test](test)
+[None](None)
 ## Contributors:
 [georgegombert] (https://github.com/georgegombert) 
 [JINJ95] (https://github.com/JINJ95) 

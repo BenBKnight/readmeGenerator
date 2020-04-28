@@ -132,37 +132,3 @@ inquirer.prompt(questions).then(answers => {
         if (err) throw err;
     });
 })
-
-
-// function writeToFile(fileName, data) {
-// }
-// function init() {
-// }
-// init();
-
-// const questions = [{
-//     type: "input",
-//     message: "Enter your GitHub username:",
-//     name: "username"
-// }, {
-//     input: "input",
-//     message: "Enter your repository name",
-//     name: "repoCalled"
-// }];
-// inquirer.prompt(questions).then(answers => {
-
-//     const queryUrl = `https://api.github.com/repos/` + answers.username + "/" + answers.repoCalled;
-
-//     //https://api.github.com/repos/BenBKnight/readmeGenerator
-//     axios.get(queryUrl).then(function (res) {
-//         console.log(res.data.name)
-//         axios.get(res.data.contributors_url).then(function (res) {
-//             console.log(res.data.length)
-//             for (i = 0; i < res.data.length; i++) {
-//                 fs.appendFileSync("README.md", res.data[i].login + " " + res.data[i].html_url + "\n", function (err) {
-//                     if (err) throw err;
-//                 })
-//             }
-//         })
-//     })
-// })
